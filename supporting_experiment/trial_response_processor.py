@@ -29,9 +29,6 @@ class TrialResponseProcessor:
         :param correct_answer: the correct answer for each trial
         """
 
-        if parallel_ports.use:
-            parallel_ports.port_write.setData(6)
-
         response = event.getKeys(keyList=['f', 'j'])
         self.response_list.append(response)
 
@@ -44,16 +41,17 @@ class TrialResponseProcessor:
         sounds = Sounds()
 
         # Auditory feedback on trial accuracy
+        # Note that parallel_ports.port_write.setData() is not used in the current study
         if self.response_list[trial_i][0] == correct_answer[trial]:
-            if parallel_ports.use:
-                parallel_ports.port_write.setData(6)
+            #if parallel_ports.use:
+                #parallel_ports.port_write.setData(6)
             sounds.correct_sound.play()
             self.accu += 1
         elif (self.response_list[trial_i][0] != correct_answer[trial]) and (correct_answer[trial] == "miss"):
-            if parallel_ports.use:
-                parallel_ports.port_write.setData(7)
+            #if parallel_ports.use:
+                #parallel_ports.port_write.setData(7)
             sounds.fail_to_stop_sound.play()
         else:
-            if parallel_ports.use:
-                parallel_ports.port_write.setData(8)
+            #if parallel_ports.use:
+                #parallel_ports.port_write.setData(8)
             sounds.incorrect_sound.play()
