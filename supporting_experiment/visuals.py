@@ -48,6 +48,14 @@ class Visuals:
         )
         high_text.draw()
 
+        annulus_text = visual.TextStim(
+            config_exp.win,
+            text="In some trials, a circle will show up. Do not press any button in these trials.",
+            pos=(0, -390),
+            height=35
+        )
+        annulus_text.draw()
+            
         introduction_text = visual.TextStim(
             config_exp.win,
             text="Press 'space' to practice.",
@@ -67,7 +75,7 @@ class Visuals:
 
         text = visual.TextStim(
             config_exp.win,
-            text=f"This is the end of the experiment. Good job! Your accuracy rate is {accuracy_rate * 100}%.",
+            text=f"This is the end of the experiment. Good job!",
             height=35
         )
         text.draw()
@@ -89,7 +97,7 @@ class Visuals:
 
         text = visual.TextStim(
             config_exp.win,
-            text=f"Block {block + 1} ends. Good job! Your accuracy rate is {accuracy_rate * 100}%.",
+            text=f"Block {block + 1} ends. Good job!",
             height=35
         )
         text.draw()
